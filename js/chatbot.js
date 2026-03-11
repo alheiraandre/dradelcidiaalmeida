@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const appendMessage = (text, sender) => {
         const div = document.createElement('div');
-        div.classList.add('text-sm', 'p-3', 'max-w-[85%]', 'border', 'border-studio');
+        div.classList.add('text-sm', 'p-4', 'max-w-[85%]', 'border', 'border-studio', 'font-medium', 'shadow-sm');
         
         if (sender === 'user') {
-            div.classList.add('bg-white', 'text-black', 'rounded-tl-xl', 'rounded-bl-xl', 'rounded-br-xl', 'self-end');
+            div.classList.add('bg-primary', 'text-white', 'rounded-tl-xl', 'rounded-bl-xl', 'rounded-br-xl', 'self-end', 'border-primary');
             div.textContent = text; 
         } else {
-            div.classList.add('bg-[#1a1a1a]', 'text-gray-300', 'rounded-tr-xl', 'rounded-bl-xl', 'rounded-br-xl', 'self-start');
+            div.classList.add('bg-secBg', 'text-darkText', 'rounded-tr-xl', 'rounded-bl-xl', 'rounded-br-xl', 'self-start');
             div.innerHTML = text; 
         }
         
@@ -55,16 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
         chatSendBtn.style.opacity = loading ? '0.5' : '1';
     };
 
-    // Base de Conhecimento do Robô
     const faqBase = [
-        { palavras: ['preço','preco','valor','custa','orçamento','orcamento','pagamento'], resposta: 'Por determinação do CRO, não divulgamos valores sem avaliação presencial. Oferecemos parcelamento em até 12x. Quer agendar?' },
-        { palavras: ['endereço','onde','fica','local','rua','flamengo'], resposta: 'Rua Almirante Tamandaré, 66 – Sala 437<br>Flamengo, Rio de Janeiro – RJ<br>CEP 22210-060' },
-        { palavras: ['horário','horario','funciona','aberto','agenda'], resposta: 'Segunda a sexta: 8h às 19h<br>Atendimentos com hora marcada.' },
-        { palavras: ['implante','dente','perdi','prótese'], resposta: 'Implantes com carga imediata. 30 anos de experiência e taxa de sucesso acima de 98%.' },
-        { palavras: ['lente','faceta','clareamento','estética'], resposta: 'Lentes de contato dental + clareamento a laser. Resultado em apenas 2 consultas.' },
-        { palavras: ['invisalign','alinhador','ortodontia'], resposta: 'Alinhadores invisíveis de última geração para um tratamento discreto.' },
-        { palavras: ['botox','bruxismo','harmonização'], resposta: 'Harmonização orofacial + toxina botulínica terapêutica.' },
-        { palavras: ['domiciliar','casa','idoso'], resposta: 'Odontologia domiciliar premium com equipamento portátil.' }
+        { palavras: ['preço','preco','valor','custa','orçamento','orcamento','pagamento'], resposta: 'Por determinação do CRO, não divulgamos valores sem avaliação presencial. Oferecemos parcelamento facilitado em até 12x. Quer agendar sua avaliação?' },
+        { palavras: ['endereço','onde','fica','local','rua','flamengo'], resposta: 'Nossa clínica fica na Rua Almirante Tamandaré, 66 – Sala 437<br>Flamengo, Rio de Janeiro – RJ<br>CEP 22210-060' },
+        { palavras: ['horário','horario','funciona','aberto','agenda'], resposta: 'Funcionamos de Segunda a Sexta: 8h às 19h.<br>Os atendimentos são feitos com hora marcada.' },
+        { palavras: ['implante','dente','perdi','prótese'], resposta: 'Realizamos Implantes com carga imediata. Temos 30 anos de experiência com uma taxa de sucesso altíssima.' },
+        { palavras: ['lente','faceta','clareamento','estética'], resposta: 'Trabalhamos com Lentes de Contato Dental de alta precisão e Clareamento a Laser para transformar seu sorriso.' },
+        { palavras: ['invisalign','alinhador','ortodontia'], resposta: 'Temos os melhores Alinhadores Invisíveis de última geração para um tratamento totalmente discreto e confortável.' },
+        { palavras: ['botox','bruxismo','harmonização'], resposta: 'Oferecemos Harmonização Orofacial completa e tratamentos com Toxina Botulínica (Botox) terapêutica.' },
+        { palavras: ['domiciliar','casa','idoso'], resposta: 'Nossa especialidade: Odontologia Domiciliar Premium. Levamos nosso equipamento portátil até sua casa com o máximo de conforto.' }
     ];
 
     const sendMessage = () => {
@@ -76,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setChatLoading(true);
 
         const typing = document.createElement('div');
-        typing.className = 'text-xs text-gray-500 self-start ml-2 animate-pulse';
-        typing.textContent = 'O assistente está digitando…';
+        typing.className = 'text-xs text-gray-400 font-bold self-start ml-2 animate-pulse';
+        typing.textContent = 'O assistente está a escrever…';
         messagesEl.appendChild(typing);
         messagesEl.scrollTop = messagesEl.scrollHeight;
 
@@ -91,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const achouPalavra = item.palavras.some(palavra => textoMinusculo.includes(palavra));
                 if (achouPalavra) {
                     respostaFinal = `${item.resposta}<br><br>
-                    <a href="https://wa.me/5521997580999" target="_blank" class="text-sm text-[#25D366] font-bold hover:underline">
+                    <a href="https://wa.me/5521997580999" target="_blank" class="text-sm text-primary font-bold hover:underline flex items-center gap-1 mt-2">
                        👉 Agendar pelo WhatsApp
                     </a>`;
                     break; 
@@ -99,10 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (respostaFinal === "") {
-                respostaFinal = `Olá! Para um atendimento mais rápido e detalhado sobre esse assunto, nossa equipe está pronta para te ajudar no WhatsApp.<br><br>
+                respostaFinal = `Olá! Para um atendimento mais rápido e cuidadoso sobre esse assunto, nossa equipa está pronta para a ajudar no WhatsApp.<br><br>
                 <a href="https://wa.me/5521997580999?text=Ol%C3%A1%2C%20estou%20no%20site%20e%20gostaria%20de%20falar%20sobre%3A%20${encodeURIComponent(text)}" 
                    target="_blank" 
-                   class="inline-block mt-3 bg-[#25D366] text-white px-4 py-2 rounded-lg font-bold text-center w-full hover:bg-[#1EAB52] transition-colors">
+                   class="inline-block mt-3 bg-primary text-white px-4 py-3 rounded-lg font-bold text-center w-full hover:bg-primaryHover transition-colors shadow-sm">
                    Conversar no WhatsApp
                 </a>`;
             }

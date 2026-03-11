@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
-    // 1. DADOS E RENDERIZAÇÃO DAS ESPECIALIDADES
-    // ==========================================
     const IMG_BASE = './assets/img/especialidades/';
     const specialtiesData = [
-        { id: 'implantes', num: '01', title: 'Implantes &<br>Cirurgias Avançadas', shortTitle: 'Implantes', shortDesc: 'Cirurgias avançadas...', desc: 'Recupere a sua qualidade de vida...', tags: ['Enxertos Ósseos', 'Carga Imediata', 'Alta Precisão'], imageName: 'implantes', alt: 'Procedimento de implante dentário', invertLayout: false },
+        { id: 'implantes', num: '01', title: 'Implantes &<br>Cirurgias Avançadas', shortTitle: 'Implantes', shortDesc: 'Cirurgias avançadas...', desc: 'Recupere a sua qualidade de vida com precisão...', tags: ['Enxertos Ósseos', 'Carga Imediata', 'Alta Precisão'], imageName: 'implantes', alt: 'Procedimento de implante dentário', invertLayout: false },
         { id: 'ortodontia', num: '02', title: 'Ortodontia<br>Estética', shortTitle: 'Ortodontia', shortDesc: 'Alinhadores invisíveis...', desc: 'Alinhamento dentário focado na discrição...', tags: ['Alinhadores', 'Conforto', 'Digital'], imageName: 'ortodontia', alt: 'Sorriso com alinhadores invisíveis', invertLayout: true },
         { id: 'estetica', num: '03', title: 'Estética<br>Dental', shortTitle: 'Estética Dental', shortDesc: 'Lentes de contato...', desc: 'A arte de desenhar sorrisos perfeitos...', tags: ['Lentes', 'Facetas', 'Clareamento'], imageName: 'estetica', alt: 'Transformação estética do sorriso', invertLayout: false },
         { id: 'endodontia', num: '04', title: 'Tratamento<br>de Canal', shortTitle: 'Endodontia', shortDesc: 'Tratamento de canal preciso...', desc: 'Endodontia indolor e rápida...', tags: ['Sem dor', 'Microscopia', 'Preservação'], imageName: 'endodontia', alt: 'Tecnologia em tratamento de canal', invertLayout: true },
@@ -21,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     specialtiesData.forEach((item) => {
         const menuLink = document.createElement('a');
         menuLink.href      = `#${item.id}`;
-        menuLink.className = 'menu-action menu-link text-4xl md:text-6xl font-bold uppercase tracking-tighter text-gray-600 hover:text-white';
+        // FONTES DO MENU REDUZIDAS PARA CABER MELHOR NO SCROLL (text-2xl)
+        menuLink.className = 'menu-action menu-link text-2xl md:text-3xl font-bold uppercase tracking-tighter text-gray-500 hover:text-primary border-b border-gray-100 pb-3';
         menuLink.textContent = `${item.num}. ${item.shortTitle}`;
         menuLinksContainer.appendChild(menuLink);
 
@@ -58,9 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         detailedSections.appendChild(detailNode);
     });
 
-    // ==========================================
-    // 2. SLIDER ANTES/DEPOIS
-    // ==========================================
     const sliderCompare = document.getElementById('slider-compare');
     const beforeImage = document.getElementById('before-image');
     const sliderHandle = document.getElementById('slider-handle');
@@ -80,9 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==========================================
-    // 3. MENU MOBILE & SWIPE GESTURES
-    // ==========================================
     const menuOverlay  = document.getElementById('menu-overlay');
     const openMenuBtn  = document.getElementById('open-menu-btn');
     const mobileMenuBtn= document.getElementById('mobile-menu-btn');
@@ -137,9 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, {passive: true});
 
-    // ==========================================
-    // 4. ANIMAÇÃO LOTTIE
-    // ==========================================
     const lottieContainer = document.getElementById('lottie-smile-container');
     if (lottieContainer) {
         lottie.loadAnimation({
@@ -151,9 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-/// ==========================================
-    // 5. CARROSSEL DE AVALIAÇÕES (AUTO-SCROLL INFINITO)
-    // ==========================================
     const reviews = [
         { nome: "Fernanda Lima", texto: "Fiz questão de vir avaliar o trabalho da Dra. Elcídia por ser uma profissional ética e de extremo bom gosto. Eu indico de olhos fechados!", nota: "5.0", data: "Fev 2026" },
         { nome: "Carlos Mendes", texto: "Implante em apenas 1 dia! Voltei a sorrir sem medo. Atendimento impecável.", nota: "5.0", data: "Jan 2026" },
@@ -164,49 +150,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const carouselContainer = document.getElementById('reviews-carousel');
     if (carouselContainer) {
-        
-        // 1. Criamos o HTML apenas dos cartões de avaliação (agora mais elegantes e compactos)
         let cardsHTML = '';
         reviews.forEach(r => {
             cardsHTML += `
-                <div class="bg-[#111] border border-studio p-6 rounded-xl flex-shrink-0 w-[280px] md:w-[320px] transition-colors hover:bg-white/5 cursor-pointer">
+                <div class="bg-white border border-studio p-8 rounded-2xl flex-shrink-0 w-[300px] md:w-[350px] transition-all hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="text-xl">⭐</div>
+                        <div class="text-2xl text-yellow-400">★</div>
                         <div>
-                            <p class="font-bold text-sm text-white">${r.nome}</p>
-                            <p class="text-xs text-gray-500">${r.data} • ${r.nota}</p>
+                            <p class="font-bold text-base text-darkText">${r.nome}</p>
+                            <p class="text-xs text-gray-500 font-medium">${r.data} • ${r.nota}</p>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm italic leading-relaxed">"${r.texto}"</p>
+                    <p class="text-gray-600 text-sm italic leading-relaxed font-medium">"${r.texto}"</p>
                 </div>`;
         });
 
-        // 2. Criamos a "esteira" do carrossel. 
-        // Duplicamos o conteúdo (cardsHTML + cardsHTML) para o loop não ter buracos.
-        // Adicionamos classes do Tailwind para pausar a animação no "hover".
         const trackHTML = `
-            <div class="flex gap-4 w-max animate-scroll hover:[animation-play-state:paused]">
+            <div class="flex gap-6 w-max animate-scroll hover:[animation-play-state:paused] py-4">
                 ${cardsHTML}
                 ${cardsHTML}
             </div>
         `;
 
-        // 3. Injetamos a esteira na tela
         carouselContainer.innerHTML = trackHTML;
 
-        // 4. Injetamos a regra da animação CSS direto via JS (assim você não precisa abrir o styles.css de novo)
         const style = document.createElement('style');
         style.innerHTML = `
             @keyframes scroll-infinite {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); } /* Move exatos 50% (o tamanho da primeira lista) */
+                100% { transform: translateX(-50%); } 
             }
             .animate-scroll {
-                /* 25 segundos é um tempo confortável para leitura. Altere esse número se quiser mais rápido/lento */
-                animation: scroll-infinite 25s linear infinite; 
+                animation: scroll-infinite 30s linear infinite; 
             }
         `;
         document.head.appendChild(style);
     }
 
-}); // <-- Fim do arquivo main.js
+});

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'estetica', num: '03', title: 'Estética<br>Dental', shortTitle: 'Estética Dental', shortDesc: 'Lentes de contato...', desc: 'A arte de desenhar sorrisos perfeitos...', tags: ['Lentes', 'Facetas', 'Clareamento'], imageName: 'estetica', alt: 'Transformação estética do sorriso', invertLayout: false },
         { id: 'endodontia', num: '04', title: 'Tratamento<br>de Canal', shortTitle: 'Endodontia', shortDesc: 'Tratamento de canal preciso...', desc: 'Endodontia indolor e rápida...', tags: ['Sem dor', 'Microscopia', 'Preservação'], imageName: 'endodontia', alt: 'Tecnologia em tratamento de canal', invertLayout: true },
         { id: 'periodontia', num: '05', title: 'Periodontia<br>& Saúde Gengival', shortTitle: 'Periodontia', shortDesc: 'Prevenção e tratamento...', desc: 'A base de um sorriso saudável...', tags: ['Gengiva', 'Profilaxia', 'Tratamento'], imageName: 'periodontia', alt: 'Saúde gengival e prevenção periodontal', invertLayout: false },
-        { id: 'harmonizacao', num: '06', title: 'Harmonização<br>& Toxina Terapêutica', shortTitle: 'Harmonização', shortDesc: 'Toxina botulínica...', desc: 'O equilíbrio perfeito entre função...', tags: ['Botox', 'Bruxismo', 'Estética'], imageName: 'harmonizacao', alt: 'Harmonização facial com toxina botulínica', invertLayout: true },
+        { id: 'harmonizacao', num: '06', title: 'Harmonização<br>& Toxina Terapêutica', shortTitle: 'Harmonização', shortDesc: 'Toxina botulínica...', desc: 'O equilíbrio perfeito entre função...', tags: ['Toxina Botulínica', 'Bruxismo', 'Estética'], imageName: 'harmonizacao', alt: 'Harmonização facial com toxina botulínica', invertLayout: true },
         { id: 'domiciliar', num: '07', title: 'Odontologia<br>Domiciliar', shortTitle: 'Domiciliar', shortDesc: 'Odontologia de excelência...', desc: 'A mesma excelência do nosso consultório...', tags: ['Portátil', 'Acessibilidade', 'Humanizado'], imageName: 'domiciliar', alt: 'Atendimento odontológico domiciliar premium', invertLayout: false }
     ];
 
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { nome: "Carlos Mendes", texto: "Implante em apenas 1 dia! Voltei a sorrir sem medo. Atendimento impecável.", nota: "5.0", data: "Jan 2026" },
         { nome: "Juliana Costa", texto: "Lentes de contato perfeitas. Meu sorriso ficou natural e iluminado.", nota: "5.0", data: "Dez 2025" },
         { nome: "Roberto Silva", texto: "Odontologia domiciliar salvou minha mãe. Atendimento humano e profissional.", nota: "5.0", data: "Nov 2025" },
-        { nome: "Mariana Oliveira", texto: "Harmonização + botox para bruxismo. Resultado incrível e sem dor.", nota: "5.0", data: "Out 2025" }
+        { nome: "Mariana Oliveira", texto: "Harmonização + Toxina Botulínica para bruxismo. Resultado incrível e sem dor.", nota: "5.0", data: "Out 2025" }
     ];
 
     const carouselContainer = document.getElementById('reviews-carousel');

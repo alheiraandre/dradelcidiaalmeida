@@ -1,0 +1,10 @@
+# Dados de sessão do Claude (não publicar)
+.claude/
+
+# Backup antigo — não deve ir para produção
+index - Copia.html
+
+# Assets não usados pelo site no ar (imagens de IA, vídeos, antes/depois desativado)
+assets/img/tratamentos/
+assets/img/especialidades/harmonizacao.avif
+assets/img/especialidades/pomelli_photoshoot_image_1_1_0414.png
